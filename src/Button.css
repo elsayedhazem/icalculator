@@ -1,0 +1,57 @@
+.component-Button {
+  display: inline-block;
+  margin: 0.2rem;
+  height: 13vh;
+  border-radius: 5px;
+  border: none;
+  padding: none;
+  font-size: 2.5rem;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 10;
+  overflow: hidden;
+}
+
+.component-Button:focus {
+  outline: none;
+}
+
+.component-Button:hover {
+  cursor: pointer;
+}
+
+.component-Button:active {
+  transform: translatey(2px);
+}
+
+.button-orange,
+#btn-equals {
+  background-color: #fd6a02;
+  color: #d4d4d2;
+}
+
+.button-orange:hover,
+#btn-equals:hover {
+  background-color: #e55b00;
+}
+
+.button-grey-1 {
+  background-color: #d4d4d2;
+  color: black;
+}
+
+.button-grey-1:hover {
+  background-color: #bfbfbf;
+}
+
+.button-grey-2 {
+  background-color: #505050;
+  color: #d4d4d2;
+}
+
+.button-grey-2:hover {
+  background-color: #3f3f3f;
+}
+
+#zero {
+  grid-column: 1 / 3;
+}

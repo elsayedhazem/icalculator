@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import Navbar from "./Navbar.js";
+import Display from "./Display.js";
+import ButtonGrid from "./ButtonGrid.js";
 import "./App.css";
 
-export default class App extends Component {
-  render() {
-    return (
-      <div id="App">
-        <Navbar />
-      </div>
-    );
-  }
+export default function App() {
+  return (
+    <div id="App">
+      <Navbar />
+      <Display />
+      <ButtonGrid />
+    </div>
+  );
 }
