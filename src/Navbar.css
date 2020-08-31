@@ -1,0 +1,18 @@
+#component-Navbar {
+  background-color: black;
+  text-align: center;
+  font-size: 2.5rem;
+  height: 15%;
+  padding: 0.5rem 0;
+}
+
+#navbar-label {
+  color: white;
+  font-family: "Pacifico", cursive;
+  text-decoration: none;
+}
+
+#navbar-label:hover {
+  text-decoration: none;
+  cursor: default;
+}
