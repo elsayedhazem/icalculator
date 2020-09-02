@@ -1,6 +1,4 @@
 class Calculator {
-  constructor() {}
-
   static add(...args) {
     return args.reduce((previous, current) => {
       return previous + current;
@@ -15,64 +13,6 @@ class Calculator {
     return args.reduce((previous, current) => {
       return previous * current;
     });
-  }
-
-  static divide(dividend, divisor) {
-    return dividend / divisor;
-  }
-
-  static toNthPower(n, exponent) {
-    return n ** exponent;
-  }
-
-  static toNthRoot(n, root) {
-    return n ** (1 / root);
-  }
-
-  static toDegrees(angle) {
-    return angle * (180 / Math.PI);
-  }
-
-  static toRadians(angle) {
-    return angle * (Math.PI / 180);
-  }
-
-  static sin(n) {
-    return Math.sin(Calculator.toRadians(n));
-  }
-
-  static asin(n) {
-    return Calculator.toDegrees(Math.asin(n));
-  }
-
-  static cos(n) {
-    return Math.cos(Calculator.toRadians(n));
-  }
-
-  static acos(n) {
-    return Calculator.toDegrees(Math.acos(n));
-  }
-
-  static tan(n) {
-    return Math.tan(Calculator.toRadians(n));
-  }
-
-  static atan(n) {
-    return Calculator.toDegrees(Math.atan(n));
-  }
-
-  static factorial(n) {
-    return Math.factorial(n);
-  }
-
-  static solveQuadratic(a, b, c) {
-    const discriminant = Calculator.toNthRoot(b ** 2 - 4 * a * c, 2);
-    const denominator = 2 * a;
-
-    const x1 = (-b + discriminant) / denominator;
-    const x2 = (-b - discriminant) / denominator;
-
-    return x1 === x2 ? x1 : [x1, x2];
   }
 
   static get pi() {
@@ -165,8 +105,8 @@ function reformat(string) {
   //Add x between adjacent parenthesis and numbers to indicate multiplication.
   const numbers = "0123456789".split("");
   for (const n of numbers) {
-    symbolReplacements[n + "("] = n + "x" + "(";
-    symbolReplacements[")" + n] = ")" + "x" + n;
+    symbolReplacements[n + "("] = `${n}x(`;
+    symbolReplacements[")" + n] = `)x${n}`;
   }
 
   if (string[0] === "+") string = string.replace("+", "");
@@ -221,8 +161,6 @@ function calculateParenthesis(string) {
 
   return string;
 }
-
-function calculateExp(string) {}
 
 function multiplyDivide(string) {
   if (string.indexOf("x") === -1 && string.indexOf("/") === -1) return string; // return if no x or / in expression

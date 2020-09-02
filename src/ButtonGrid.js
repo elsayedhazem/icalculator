@@ -3,41 +3,165 @@ import Button from "./Button.js";
 import "./ButtonGrid.css";
 
 export default class ButtonGrid extends Component {
+  constructor(props) {
+    super(props);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
+  }
+
+  handleButtonClick(func) {
+    this.props.buttonClickHandler(func);
+  }
+
   render() {
     return (
       <div id="component-ButtonGrid">
         <div className="button-row">
-          <Button value="CE" color="grey-1" />
-          <Button value="(" color="grey-1" />
-          <Button value=")" color="grey-1" />
-          <Button value="÷" color="orange" />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="CE"
+            color="grey-1"
+            buttonType="clear"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="("
+            color="grey-1"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value=")"
+            color="grey-1"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="÷"
+            color="orange"
+            buttonType="operation"
+          />
         </div>
 
         <div className="button-row">
-          <Button value="7" color="grey-2" />
-          <Button value="8" color="grey-2" />
-          <Button value="9" color="grey-2" />
-          <Button value="x" color="orange" />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="7"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="8"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="9"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="x"
+            color="orange"
+            buttonType="operation"
+          />
         </div>
 
         <div className="button-row">
-          <Button value="4" color="grey-2" />
-          <Button value="5" color="grey-2" />
-          <Button value="6" color="grey-2" />
-          <Button value="-" color="orange" />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="4"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="5"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="6"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="-"
+            color="orange"
+            buttonType="operation"
+          />
         </div>
 
         <div className="button-row">
-          <Button value="1" color="grey-2" />
-          <Button value="2" color="grey-2" />
-          <Button value="3" color="grey-2" />
-          <Button value="+" color="orange" />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="1"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="2"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="3"
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="+"
+            color="orange"
+            buttonType="operation"
+          />
         </div>
 
         <div className="button-row">
-          <Button value="0" color="grey-2" id="zero" />
-          <Button value="." color="grey-2" />
-          <Button value="=" color="orange" />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="0"
+            color="grey-2"
+            buttonType="character"
+            id="zero"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="."
+            color="grey-2"
+            buttonType="character"
+          />
+          <Button
+            buttonClickHandler={this.handleButtonClick}
+            displayValue={this.props.displayValue}
+            value="="
+            color="orange"
+            buttonType="equals"
+          />
         </div>
       </div>
     );
