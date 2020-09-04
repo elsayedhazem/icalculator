@@ -15,6 +15,10 @@ class Calculator {
     });
   }
 
+  static divide(n, m) {
+    return n / m;
+  }
+
   static get pi() {
     return Math.PI;
   }
