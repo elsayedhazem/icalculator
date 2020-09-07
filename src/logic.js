@@ -1,3 +1,22 @@
+/*
+This is where all the magic happens.
+Calculator class is self explanatory, it is called by other functions 
+to perform operations on Numbers.
+
+The functions that follow revolve around one main string, the user input, which is passed to 
+calculate by the App component. This string is then iteratated over multiple times
+to perform the following steps: 
+1) Return if string is empty
+2) Remove all spaces to make the string easier to translate into math
+3) Check for syntax errors
+4) Reformat the string to again make it easier to work with, for example changing adding a negative Number to subtraction
+5) Simplify the expression following the order of operations until one term remains (this is where the magic lies)
+
+Note from Devloper:
+Having not gone into the details of any backend of calculator apps, I feel like this method
+may be overkill. In any case, it was fun, and it has some cool recursion; most importantly, it works.
+*/
+
 class Calculator {
   static add(...args) {
     return args.reduce((previous, current) => {
@@ -38,11 +57,9 @@ class Calculator {
 }
 
 function hasSyntaxError(string) {
-  string = string.split("÷").join("/");
-
   const hasUnequalParentheses = (str) => {
+    // make sure occurences of open and closed paranthesis are of the same amount
     if (str.split("(").length - 1 !== str.split(")").length - 1) return true;
-    // compare occurences of '(' and ')'
     else {
       return false;
     }
@@ -117,7 +134,7 @@ function reformat(string) {
 
   let requiresChanges = true;
   while (requiresChanges) {
-    //loop to replace
+    //loop to replace any substrings that need replacement
     for (const char of Object.keys(symbolReplacements)) {
       if (string.indexOf(char) !== -1) {
         string = string.replace(char, symbolReplacements[char]);
@@ -126,7 +143,7 @@ function reformat(string) {
 
     requiresChanges = false;
 
-    //loop to check
+    //loop to check for further changes
     for (const char of Object.keys(symbolReplacements)) {
       if (string.indexOf(char) !== -1) {
         requiresChanges = true;
@@ -140,7 +157,7 @@ function reformat(string) {
 
 function calculateParenthesis(string) {
   const startIndex = string.indexOf("(");
-  if (startIndex === -1) return string; //check if it has parenthesis
+  if (startIndex === -1) return string; //return if expression has no parenthesis
   const lastIndex = string.length - 1;
 
   let endIndex;
@@ -195,7 +212,7 @@ function multiplyDivide(string) {
   };
   let arr = toArray(string);
 
-  //find first occurence of multiplication or division and its index
+  //find first occurence of multiplication or division and its index in array
   let symbolIndex;
   let symbol;
 
@@ -206,6 +223,7 @@ function multiplyDivide(string) {
   if (firstMulIndex === -1) [symbolIndex, symbol] = [firstDivideIndex, "/"];
   else if (firstDivideIndex === -1)
     [symbolIndex, symbol] = [firstMulIndex, "x"];
+  // if it has both set variables to the one that occurs first
   else
     [symbolIndex, symbol] = [
       firstMulIndex < firstDivideIndex ? firstMulIndex : firstDivideIndex,
@@ -220,10 +238,11 @@ function multiplyDivide(string) {
   arr.splice(symbolIndex - 1, 2);
   arr[symbolIndex - 1] = String(ans);
 
-  return multiplyDivide(arr.join(""));
+  return multiplyDivide(arr.join("")); // recursion till no more multiplication and division in expression
 }
 
 function addSubtract(string) {
+  // create an array of positive or negative terms and combine all of them
   const symbols = ["-", "+"];
   let temp = "";
   let arr = [];
@@ -250,16 +269,19 @@ function addSubtract(string) {
 
 export function calculate(str) {
   if (str.trim() === "") return "";
-  str = str.split(" ").join(""); //SPACES REMOVED
-  if (hasSyntaxError(str)) return "Syntax Error";
 
+  //Replace spaces and division symbols.
+  str = str.split("÷").join("/");
+  str = str.split(" ").join("");
+
+  if (hasSyntaxError(str)) return "Syntax Error";
   str = reformat(str);
+
   str = calculateParenthesis(str);
-  // str = calculateExp(str);
   str = multiplyDivide(str);
   str = addSubtract(str);
 
-  if (str === "NaN") return "Error";
   if (str === "Infinity") return "Math Error";
+  if (str === "NaN") return "Error";
   return str;
 }
