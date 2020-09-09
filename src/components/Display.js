@@ -18,14 +18,14 @@ export default class Display extends Component {
 
   render() {
     return (
-      <div
+      <p
         onKeyDown={(event) => this.props.keyDownHandler(event)}
         id="component-Display"
         ref={this.displayRef}
         contentEditable
       >
         {this.props.value}
-      </div>
+      </p>
     );
   }
 }

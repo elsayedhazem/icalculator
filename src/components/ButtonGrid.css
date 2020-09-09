@@ -1,8 +1,10 @@
 #component-ButtonGrid {
+  margin: 0 0.75vh 0.75vh 0.75vh;
+  height: 79.25vh;
+  width: 99.25vw;
   display: grid;
   grid-template-rows: auto auto auto auto auto;
   padding-bottom: 0 0.4rem 0.4rem 0.4rem;
-  margin-top: 2vh;
 }
 
 .button-row {

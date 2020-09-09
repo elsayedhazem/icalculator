@@ -116,7 +116,7 @@ export default class App extends Component {
   render() {
     return (
       <div id="App">
-        <Navbar />
+        {/* <Navbar /> */}
         <Display
           keyDownHandler={this.handleKeyDown}
           ref={this.displayRef} // Reference lift up to return focus to Display after Button clicks
