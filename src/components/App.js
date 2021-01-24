@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Navbar from "./Navbar.js";
 import Display from "./Display.js";
 import ButtonGrid from "./ButtonGrid.js";
 import "./App.css";
@@ -19,7 +18,7 @@ export default class App extends Component {
   }
 
   setDisplayValue(input) {
-    const characters = "1234567890.()".split(""); // Any character not present in array will not render to Display
+    const characters = "1234567890.()".split(""); // Any key not present in array will not render to Display
 
     const oldDisplayValue = this.state.displayValue;
 
